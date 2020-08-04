@@ -21,7 +21,7 @@ const generateStations = (howMany = 1) => {
   return stations;
 };
 
-const getTurnoverPerHour = (openHour = 6, closeHour = 22) => {
+const getNetIncomePerHour = (openHour = 6, closeHour = 22) => {
   const hours = [];
 
   for (let i = 0; i < 24; i++) {
@@ -37,14 +37,24 @@ const getTurnoverPerHour = (openHour = 6, closeHour = 22) => {
   return hours;
 };
 
+const getNetIncomePerDay = (daysRange) => {
+  const days = [];
+
+  for (let i = 0; i < daysRange; i++) {
+    days.push(faker.random.number());
+  }
+
+  return days;
+};
+
 module.exports = () => {
   const stationsEndpoint = generateStations(5);
 
   return {
     stations: stationsEndpoint.map((station) => ({
       ...station,
-      turnoverPerHourWorkDay: getTurnoverPerHour(6, 24),
-      turnoverPerHourDayOff: getTurnoverPerHour(8, 22),
+      dailyNetIncomePerHour: getNetIncomePerHour(6, 24),
+      weeklyNetIncomePerDay: getNetIncomePerDay(7),
     })),
   };
 };

@@ -2,7 +2,13 @@ import React from 'react';
 import { MainNavigation as Navigation } from './components/MainNavigation';
 
 import './App.scss';
-import { Button, Container, Box } from '@material-ui/core';
+import {
+  Container,
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+} from '@material-ui/core';
 
 function App() {
   return (
@@ -12,10 +18,11 @@ function App() {
       </header>
       <main>
         <Container maxWidth="lg">
-          <Box my={2}>
-            <Button variant="contained" color="default">
-              test button
-            </Button>
+          <Box py={2}>
+            <Card>
+              <CardHeader title="Test Chart" />
+              <CardContent></CardContent>
+            </Card>
           </Box>
         </Container>
       </main>
