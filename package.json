@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^7.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-fetch-hook": "^1.8.3",
     "react-scripts": "3.4.1",
     "recharts": "^1.8.5"
   },
@@ -18,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server db/index.js --port 3001"
+    "server": "json-server db/index.js --port 3001 --delay 2000"
   },
   "eslintConfig": {
     "extends": "react-app"
