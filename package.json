@@ -12,7 +12,13 @@
     "react-dom": "^16.13.1",
     "react-fetch-hook": "^1.8.3",
     "react-scripts": "3.4.1",
-    "recharts": "^1.8.5"
+    "recharts": "^1.8.5",
+    "concurrently": "^5.2.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "faker": "^4.1.0",
+    "json-server": "^0.16.1",
+    "node-sass": "^4.14.1",
+    "prettier": "^2.0.5"
   },
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"npm:server\"",
@@ -35,13 +41,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "concurrently": "^5.2.0",
-    "eslint-plugin-prettier": "^3.1.4",
-    "faker": "^4.1.0",
-    "json-server": "^0.16.1",
-    "node-sass": "^4.14.1",
-    "prettier": "^2.0.5"
   }
 }

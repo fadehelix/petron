@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { MainNavigation as Navigation } from './components/MainNavigation';
 
-import './App.scss';
 import {
   Container,
   Box,
@@ -10,30 +9,6 @@ import {
   CardHeader,
 } from '@material-ui/core';
 import { LineChart } from './components/charts/LineChart';
-
-import useFetch from 'react-fetch-hook';
-
-const helperDateRange = [
-  '01.07',
-  '02.07',
-  '03.07',
-  '04.07',
-  '05.07',
-  '06.07',
-  '07.07',
-];
-
-const mapDataToChart = (data) => {
-  return [
-    {
-      //day
-      //income in 1  station
-      //income in 2  station
-      //income in 3  station
-      //amt
-    },
-  ];
-};
 
 function App() {
   return (
