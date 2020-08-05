@@ -9,8 +9,9 @@ import {
   Tooltip,
 } from 'recharts';
 import useFetch from 'react-fetch-hook';
-
 import Faker from 'faker';
+
+import { ChartLoader } from '../ChartLoader';
 
 const LineChart = ({ dataSource }) => {
   const { isLoading, data, error } = useFetch(dataSource);
@@ -23,17 +24,7 @@ const LineChart = ({ dataSource }) => {
   return (
     <>
       {isLoading ? (
-        <div
-          style={{
-            height: 300,
-            width: 600,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          Loading....
-        </div>
+        <ChartLoader containerWidth={600} containerHeight={300} />
       ) : (
         <Chart width={600} height={300} data={chartData}>
           <CartesianGrid stroke="#ccc" />
