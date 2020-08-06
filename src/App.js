@@ -9,6 +9,7 @@ import {
   CardHeader,
 } from '@material-ui/core';
 import { LineChart } from './components/charts';
+import { TableDataAPI, SimpleTable } from './components/SimpleTable';
 
 function App() {
   return (
@@ -24,6 +25,22 @@ function App() {
               <CardContent>
                 <LineChart
                   dataSource={'http://localhost:3001/dailyIncomeByStation'}
+                />
+              </CardContent>
+            </Card>
+          </Box>
+        </Container>
+        <Container maxWidth="sm">
+          <Box py="2">
+            <Card>
+              <CardHeader title="Petrol stations" />
+              <CardContent>
+                <TableDataAPI
+                  dataSource="http://localhost:3001/stations"
+                  tableHeaders={['code', 'city', 'address']}
+                  render={(data, tableHeaders) => (
+                    <SimpleTable data={data} tableHeaders={tableHeaders} />
+                  )}
                 />
               </CardContent>
             </Card>
