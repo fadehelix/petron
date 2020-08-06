@@ -8,7 +8,7 @@ import {
   CardContent,
   CardHeader,
 } from '@material-ui/core';
-import { LineChart } from './components/charts/LineChart';
+import { LineChart } from './components/charts';
 
 function App() {
   return (

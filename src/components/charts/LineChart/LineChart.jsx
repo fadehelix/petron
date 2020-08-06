@@ -11,7 +11,7 @@ import {
 import useFetch from 'react-fetch-hook';
 import Faker from 'faker';
 
-import { ChartLoader } from '../ChartLoader';
+import { ChartLoader } from '..';
 
 const LineChart = ({ dataSource }) => {
   const { isLoading, data, error } = useFetch(dataSource);
