@@ -24,7 +24,7 @@ const LineChart = ({ dataSource }) => {
   return (
     <>
       {isLoading ? (
-        <ChartLoader containerWidth={600} containerHeight={300} />
+        <ChartLoader containerHeight={300} />
       ) : (
         <Chart width={600} height={300} data={chartData}>
           <CartesianGrid stroke="#ccc" />

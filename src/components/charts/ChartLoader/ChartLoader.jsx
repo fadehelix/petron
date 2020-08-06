@@ -11,7 +11,7 @@ const ChartLoader = ({
     <div
       style={{
         height: containerHeight,
-        width: containerWidth,
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -26,6 +26,9 @@ ChartLoader.propTypes = {
   containerHeight: PropTypes.number.isRequired,
   containerWidth: PropTypes.number.isRequired,
   color: PropTypes.oneOf(['primary', 'secondary']),
+};
+ChartLoader.defaultProps = {
+  containerWidth: '100%',
 };
 
 export default ChartLoader;
