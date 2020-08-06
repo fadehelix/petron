@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import useFetch from 'react-fetch-hook';
-
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import { Link } from 'react-router-dom';
 
 const rows = [];
 
@@ -41,7 +41,12 @@ const SimpleTable = ({ data, tableHeaders }) => {
       </TableHead>
       <TableBody>
         {rows.map((row, rowIndex) => (
-          <TableRow key={'row' + rowIndex} hover={true}>
+          <TableRow
+            key={'row' + rowIndex}
+            hover={true}
+            component={Link}
+            to={`/station/${rowIndex}`}
+          >
             {row.map((cell, cellIndex) => (
               <TableCell key={`cell-${cellIndex}`}>{cell}</TableCell>
             ))}

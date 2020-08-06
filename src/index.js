@@ -8,11 +8,14 @@ import * as serviceWorker from './serviceWorker';
 import './index.scss';
 import { darkTheme as theme } from './theme';
 
+const StationContext = React.createContext({});
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <App />
+      <StationContext.Provider value={{}}>
+        <App />
+      </StationContext.Provider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
