@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import { LineChart } from '../../charts';
 import { SimpleTable, TableDataAPI } from '../../SimpleTable';
+
 const Dashboard = () => {
   return (
     <>
