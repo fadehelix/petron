@@ -19,7 +19,7 @@ const Station = ({ stationData }) => {
       <Container maxWidth="lg">
         <Box py={2}>
           <Card>
-            <CardHeader title={`Station ${stationId}`} />
+            <CardHeader title={`Station ${context.code}`} />
             <CardContent>
               {`Station Address: ${context.address}, ${context.city}`}
             </CardContent>

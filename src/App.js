@@ -6,11 +6,6 @@ import { Dashboard, Station } from './components/pages';
 
 import StationContext from './contexts/StationContext';
 
-const station = {
-  station: {},
-  setStation: (station) => {},
-};
-
 function App() {
   const [context, setContext] = useState({});
 

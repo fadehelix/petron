@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import { LineChart } from '../../charts';
 import { SimpleTable, TableDataAPI } from '../../SimpleTable';
+import './Dashboard.scss';
 
 const Dashboard = () => {
   return (
@@ -33,7 +34,11 @@ const Dashboard = () => {
                 dataSource="http://localhost:3001/stations"
                 tableHeaders={['id', 'code', 'city', 'address']}
                 render={(data, tableHeaders) => (
-                  <SimpleTable data={data} tableHeaders={tableHeaders} />
+                  <SimpleTable
+                    data={data}
+                    tableHeaders={tableHeaders}
+                    className="AllStationsTable"
+                  />
                 )}
               />
             </CardContent>

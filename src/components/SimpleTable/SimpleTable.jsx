@@ -1,11 +1,12 @@
 import React, { useEffect, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import useFetch from 'react-fetch-hook';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { CircularProgress } from '@material-ui/core';
 import Context from '../../contexts/StationContext';
 
@@ -15,9 +16,10 @@ const TableDataAPI = ({ dataSource, render, tableHeaders }) => {
   return <>{isLoading ? <CircularProgress /> : render(data, tableHeaders)}</>;
 };
 
-const SimpleTable = ({ data, tableHeaders }) => {
+const SimpleTable = ({ data, tableHeaders, className }) => {
   const [rows, setRows] = useState([]);
   const [context, setContext] = useContext(Context);
+  const history = useHistory();
 
   const mapRowByHeaders = (row, headers) => {
     const output = [];
@@ -32,7 +34,7 @@ const SimpleTable = ({ data, tableHeaders }) => {
     setRows(tableRows);
   }, [data, tableHeaders]);
   return (
-    <Table aria-label="simple table">
+    <Table className={className}>
       <TableHead>
         <TableRow>
           {tableHeaders.map((tHead, index) => (
@@ -42,15 +44,17 @@ const SimpleTable = ({ data, tableHeaders }) => {
       </TableHead>
       <TableBody>
         {rows.map((row, rowIndex) => (
-          <TableRow
-            key={'row' + rowIndex}
-            hover={true}
-            component={Link}
-            to={`/station/${rowIndex + 1}`}
-            onClick={() => setContext(data[row[0]])}
-          >
+          <TableRow key={'row' + rowIndex} hover={true}>
             {row.map((cell, cellIndex) => (
-              <TableCell key={`cell-${cellIndex}`}>{cell}</TableCell>
+              <TableCell
+                key={`cell-${cellIndex}`}
+                onClick={() => {
+                  setContext(data[row[0] - 1]);
+                  history.push(`/station/${rowIndex}`);
+                }}
+              >
+                {cell}
+              </TableCell>
             ))}
           </TableRow>
         ))}
@@ -58,4 +62,11 @@ const SimpleTable = ({ data, tableHeaders }) => {
     </Table>
   );
 };
+
+SimpleTable.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object),
+  tableHeaders: PropTypes.arrayOf(PropTypes.string),
+  className: PropTypes.string,
+};
+
 export { TableDataAPI, SimpleTable };
