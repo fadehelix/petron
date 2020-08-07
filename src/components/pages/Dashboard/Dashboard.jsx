@@ -6,10 +6,11 @@ import {
   CardContent,
   CardHeader,
 } from '@material-ui/core';
-import { LineChart } from '../../charts';
+import { LineChart, ChartDataApi } from '../../charts';
 import { SimpleTable, TableDataAPI } from '../../SimpleTable';
-import './Dashboard.scss';
 import ErrorBoundary from '../../../ErrorBoundary';
+
+import './Dashboard.scss';
 
 const Dashboard = () => {
   return (
@@ -20,8 +21,9 @@ const Dashboard = () => {
             <CardHeader title="Net Income in all stations for last week" />
             <CardContent>
               <ErrorBoundary>
-                <LineChart
-                  dataSource={'http://localhost:3002/dailyIncomeByStation'}
+                <ChartDataApi
+                  dataSource={'http://localhost:3001/dailyIncomeByStation'}
+                  render={(data) => <LineChart data={data} />}
                 />
               </ErrorBoundary>
             </CardContent>
@@ -35,7 +37,7 @@ const Dashboard = () => {
             <CardContent>
               <ErrorBoundary erroMessage="Something went wrong">
                 <TableDataAPI
-                  dataSource="http://localhost:3002/stations"
+                  dataSource="http://localhost:3001/stations"
                   tableHeaders={['id', 'code', 'city', 'address']}
                   render={(data, tableHeaders) => (
                     <SimpleTable

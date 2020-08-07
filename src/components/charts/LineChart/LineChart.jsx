@@ -8,28 +8,18 @@ import {
   Legend,
   Tooltip,
 } from 'recharts';
-import useFetch from 'react-fetch-hook';
 import Faker from 'faker';
-import { ErrorMessage } from '../../ErrorMessage';
 
-import { ChartLoader } from '..';
-
-const LineChart = ({ dataSource }) => {
-  const { isLoading, data, error } = useFetch(dataSource);
+const LineChart = ({ data }) => {
   const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
     setChartData(data);
   }, [data]);
 
-  if (error) {
-    return <ErrorMessage>Cannot receive data :(</ErrorMessage>;
-  }
   return (
     <>
-      {isLoading ? (
-        <ChartLoader containerHeight={300} />
-      ) : (
+      {
         <Chart width={600} height={300} data={chartData}>
           <CartesianGrid stroke="#ccc" />
           <XAxis dataKey="name" />
@@ -46,7 +36,7 @@ const LineChart = ({ dataSource }) => {
               />
             ))}
         </Chart>
-      )}
+      }
     </>
   );
 };
