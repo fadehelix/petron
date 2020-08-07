@@ -10,6 +10,7 @@ import {
 } from 'recharts';
 import useFetch from 'react-fetch-hook';
 import Faker from 'faker';
+import { ErrorMessage } from '../../ErrorMessage';
 
 import { ChartLoader } from '..';
 
@@ -21,6 +22,9 @@ const LineChart = ({ dataSource }) => {
     setChartData(data);
   }, [data]);
 
+  if (error) {
+    return <ErrorMessage>Cannot receive data :(</ErrorMessage>;
+  }
   return (
     <>
       {isLoading ? (

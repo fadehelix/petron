@@ -9,6 +9,7 @@ import {
 import { LineChart } from '../../charts';
 import { SimpleTable, TableDataAPI } from '../../SimpleTable';
 import './Dashboard.scss';
+import ErrorBoundary from '../../../ErrorBoundary';
 
 const Dashboard = () => {
   return (
@@ -18,9 +19,11 @@ const Dashboard = () => {
           <Card>
             <CardHeader title="Net Income in all stations for last week" />
             <CardContent>
-              <LineChart
-                dataSource={'http://localhost:3001/dailyIncomeByStation'}
-              />
+              <ErrorBoundary>
+                <LineChart
+                  dataSource={'http://localhost:3002/dailyIncomeByStation'}
+                />
+              </ErrorBoundary>
             </CardContent>
           </Card>
         </Box>
@@ -30,17 +33,19 @@ const Dashboard = () => {
           <Card>
             <CardHeader title="Petrol stations" />
             <CardContent>
-              <TableDataAPI
-                dataSource="http://localhost:3001/stations"
-                tableHeaders={['id', 'code', 'city', 'address']}
-                render={(data, tableHeaders) => (
-                  <SimpleTable
-                    data={data}
-                    tableHeaders={tableHeaders}
-                    className="AllStationsTable"
-                  />
-                )}
-              />
+              <ErrorBoundary erroMessage="Something went wrong">
+                <TableDataAPI
+                  dataSource="http://localhost:3002/stations"
+                  tableHeaders={['id', 'code', 'city', 'address']}
+                  render={(data, tableHeaders) => (
+                    <SimpleTable
+                      data={data}
+                      tableHeaders={tableHeaders}
+                      className="AllStationsTable"
+                    />
+                  )}
+                />
+              </ErrorBoundary>
             </CardContent>
           </Card>
         </Box>

@@ -10,9 +10,14 @@ import { useHistory } from 'react-router-dom';
 import { CircularProgress } from '@material-ui/core';
 import Context from '../../contexts/StationContext';
 
-const TableDataAPI = ({ dataSource, render, tableHeaders }) => {
-  const { isLoading, data } = useFetch(dataSource);
+import { ErrorMessage } from '../ErrorMessage';
 
+const TableDataAPI = ({ dataSource, render, tableHeaders }) => {
+  const { isLoading, data, error } = useFetch(dataSource);
+
+  if (error) {
+    return <ErrorMessage>Cannot receive data :(</ErrorMessage>;
+  }
   return <>{isLoading ? <CircularProgress /> : render(data, tableHeaders)}</>;
 };
 
